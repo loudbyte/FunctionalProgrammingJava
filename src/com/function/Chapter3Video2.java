@@ -48,6 +48,10 @@ public class Chapter3Video2 {
 
     System.out.println(customLongerThanResult);
 
+    // Or create variable with predicate
+    Predicate<String> isLongerThan3 = createLengthTest.apply(3);
+
+
   }
 
 }
