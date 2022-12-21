@@ -2,6 +2,7 @@ package com.function;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,24 @@ public class Chapter3Video2 {
         .collect(Collectors.toList());
 
     System.out.println(evensD);
+
+    //Filter words that longer than 5 ch:
+    List<String> strings = List.of("asd", "asdasd", "a", "asdasdasd");
+    Predicate<String> isLongerThan5 = str -> str.length() > 5;
+
+    List<String> longerThan5Result = strings.stream().
+        filter(isLongerThan5).
+        collect(Collectors.toList());
+
+    System.out.println(longerThan5Result);
+
+    Function<Integer, Predicate<String>> createLengthTest = minLength -> str -> str.length() > minLength;
+
+    List<String> customLongerThanResult = strings.stream().
+        filter(createLengthTest.apply(5)).
+        collect(Collectors.toList());
+
+    System.out.println(customLongerThanResult);
 
   }
 
